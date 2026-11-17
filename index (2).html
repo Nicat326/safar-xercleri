@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Səfər xərcləri: kim kimə nə qədər ödəməlidir</title>
+<style>
+:root{--bg:#eef1f6;--sf:#fff;--tx:#14213d;--mu:#5a6785;--ac:#2b44c7;--acx:#fff;--soft:#e6ebfb;--bd:#d8deea;--dg:#b42318;--ok:#0b7a4b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1220;--sf:#151c30;--tx:#e8ecf8;--mu:#96a1bf;--ac:#8da2ff;--acx:#0d1220;--soft:#1c2748;--bd:#28334f;--dg:#ff9b92;--ok:#6fdca8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1220;--sf:#151c30;--tx:#e8ecf8;--mu:#96a1bf;--ac:#8da2ff;--acx:#0d1220;--soft:#1c2748;--bd:#28334f;--dg:#ff9b92;--ok:#6fdca8;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+h1{font:700 clamp(26px,5vw,38px)/1.15 Georgia,"Times New Roman",serif;margin:8px 0 6px;letter-spacing:-.01em}
+h2{font-size:17px;margin:0 0 12px}
+.sub{color:var(--mu);margin:0 0 18px;max-width:62ch}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.st{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px 14px}
+.st b{display:block;font:700 22px Georgia,serif;font-variant-numeric:tabular-nums}
+.st span{color:var(--mu);font-size:13px}
+.ticket{border-left:5px solid var(--ac)}
+.pay{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:2px dashed var(--bd)}
+.pay:last-child{border-bottom:0}
+.pay .n{font-weight:600}
+.pay .ar{color:var(--ac);font-size:20px}
+.pay .am{margin-left:auto;font:700 20px Georgia,serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pay .rest{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ok{color:var(--ok);font-weight:600}
+label.f{display:block;font-size:13px;color:var(--mu);margin:10px 0 4px}
+input,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:9px 10px;min-height:42px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+input[type=checkbox]{width:18px;height:18px;min-height:0;margin:0 8px 0 0;accent-color:var(--ac)}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);padding:9px 14px;min-height:42px}
+button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
+button.s{min-height:34px;padding:4px 10px;font-size:14px}
+button.d{color:var(--dg)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.seg{display:flex;gap:6px;margin:4px 0}
+.seg button{flex:1}
+.seg button[aria-pressed=true]{background:var(--soft);border-color:var(--ac);font-weight:600}
+.pr{display:flex;gap:8px;margin-bottom:8px}
+.wr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 0}
+.wr label{display:flex;align-items:center;flex:1}
+.wr input.num{width:110px}
+.hint{font-size:13px;color:var(--mu);margin-top:6px}
+.err{color:var(--dg);font-size:14px;min-height:20px;margin-top:8px}
+.sc{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 6px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap}
+th{color:var(--mu);font-weight:600;font-size:13px}
+td.r,th.r{text-align:right}
+.pos{color:var(--ok);font-weight:600}.neg{color:var(--dg);font-weight:600}
+.ex{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.ex:last-child{border-bottom:0}
+.ex .i{flex:1;min-width:0}.ex .t{font-weight:600}.ex .m{font-size:13px;color:var(--mu)}
+.ex .a{font:700 17px Georgia,serif;white-space:nowrap}
+.emp{color:var(--mu);padding:8px 0}
+details{margin-top:4px;color:var(--mu);font-size:14px}summary{cursor:pointer;color:var(--tx);font-weight:600}
+.sx{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;align-items:center}
+#flow svg{width:100%;max-height:360px;display:block}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{background:var(--sf);border:1px solid var(--bd);border-radius:999px;padding:6px 14px;font-size:14px}
+.prog{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin:4px 0 12px}
+.prog i{display:block;height:100%;background:var(--ok);transition:width .4s}
+.pay.done .n,.pay.done .am{text-decoration:line-through;opacity:.5}
+.cf{position:fixed;top:-10px;width:9px;height:14px;z-index:99;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),105vh) rotate(720deg)}}
+body{background:radial-gradient(700px 380px at 100% 0,rgba(232,82,122,.13),transparent 70%),radial-gradient(700px 480px at 0 100%,rgba(43,68,199,.13),transparent 70%),var(--bg);background-attachment:fixed}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:30px 26px 54px;color:#fff;background:radial-gradient(circle 30px at 93% 22%,#ffd166 96%,transparent 100%),linear-gradient(135deg,#1a1f6b 0%,#4a2b9a 52%,#e8527a 100%)}
+.hero .pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:4px 12px;font-size:13px;margin-bottom:10px}
+.hero h1{font:700 clamp(32px,7vw,58px)/1.05 Georgia,"Times New Roman",serif;margin:0 0 10px;color:#fff;letter-spacing:-.02em}
+.hero .sub{color:rgba(255,255,255,.9);max-width:44ch;margin:0}
+.route{position:absolute;right:22px;bottom:10px;width:340px;height:90px;max-width:100%;pointer-events:none}
+.plane{position:absolute;left:0;top:0;margin:-14px 0 0 -14px;font-size:24px;offset-path:path("M20 72Q170-24 320 38");offset-rotate:0deg;animation:fly 3.2s cubic-bezier(.4,0,.2,1) .3s both}
+@keyframes fly{from{offset-distance:0%}to{offset-distance:100%}}
+.stats{margin-top:14px}
+@media(min-width:641px){.stats{margin-top:-30px;position:relative;padding:0 18px}}
+@media(max-width:640px){.route{position:relative;right:auto;bottom:auto;margin-top:12px}.hero{padding-bottom:18px}}
+.st{border-top:3px solid var(--ac);border-radius:14px;box-shadow:0 10px 24px -16px rgba(20,33,61,.5)}
+.st:nth-child(2){border-top-color:#e8527a}.st:nth-child(3){border-top-color:#f5a524}.st:nth-child(4){border-top-color:var(--ok)}
+.card{border-radius:18px;box-shadow:0 12px 30px -20px rgba(20,33,61,.45)}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:20px}
+button.p{background:linear-gradient(135deg,#2b44c7,#c2417a);color:#fff;border:0}
+.ticket{position:relative;border:1px solid var(--bd);border-top:6px solid transparent;background:linear-gradient(var(--sf),var(--sf)) padding-box,linear-gradient(90deg,#2b44c7,#e8527a,#f5a524) border-box}
+.ticket::before,.ticket::after{content:"";position:absolute;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:var(--bg);border:1px solid var(--bd)}
+.ticket::before{left:-13px}.ticket::after{right:-13px}
+.pay .am{font-size:22px;color:var(--ac)}
+@media(min-width:760px){.sx>#settle{border-left:2px dashed var(--bd);padding-left:20px}}
+@media print{
+:root:root:root{--bg:#fff;--sf:#fff;--tx:#111;--mu:#555;--ac:#2b44c7;--soft:#eef0fa;--bd:#ccc;--dg:#b42318;--ok:#067647;color-scheme:light}
+body{background:#fff!important}
+.hero{background:none!important;color:#111;padding:0 0 8px;border-radius:0}
+.hero h1{color:#111}.hero .sub{color:#444}
+.hero .pill,.route,.row,button,details,.prog,.ticket::before,.ticket::after,.grid>div:first-child,.grid>div:last-child>.card:last-child{display:none!important}
+.stats{margin-top:8px!important;padding:0!important}
+.card,.st{box-shadow:none!important;break-inside:avoid}
+.ticket{background:#fff!important;border-top:4px solid #2b44c7}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hero"><div class="route" aria-hidden="true"><svg viewBox="0 0 340 90" width="340" height="90"><path d="M20 72Q170-24 320 38" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/><circle cx="20" cy="72" r="5" fill="#fff"/><circle cx="320" cy="38" r="5" fill="#ffd166"/></svg><span class="plane">✈️</span></div><span class="pill">🤝 Mübahisəsiz hesablaşma</span>
+<h1>Səfər xərcləri</h1>
+<p class="sub">Dostlarla səfərdə kim nəyə nə qədər xərcləyib, bunu yazın. Proqram sonda kimin kimə neçə manat ödəməli olduğunu ən az əməliyyatla hesablayır.</p></header>
+
+<div class="stats">
+<div class="st"><b id="sTot">0.00 ₼</b><span>Ümumi xərc</span></div>
+<div class="st"><b id="sCnt">0</b><span>Xərc sayı</span></div>
+<div class="st"><b id="sAvg">0.00 ₼</b><span>Adambaşı orta</span></div>
+<div class="st"><b id="sTx">0</b><span>Lazım olan ödəniş</span></div>
+</div>
+
+<div class="chips" id="aw"></div>
+<div class="card ticket">
+<h2>Kim kimə nə qədər ödəməlidir</h2>
+<div class="prog" aria-hidden="true"><i id="prog" style="width:0"></i></div>
+<div class="sx"><div id="flow"></div><div id="settle"></div></div>
+<div class="row"><button class="s" id="copy">Nəticəni kopyala</button><button class="s" id="xls">Excel-ə yüklə</button><button class="s" id="pdf">PDF kimi saxla</button><span class="hint" id="copied"></span></div>
+</div>
+
+<div class="grid">
+<div>
+<div class="card">
+<h2 id="fTitle">Xərc əlavə et</h2>
+<label class="f" for="desc">Nəyə xərclənib</label><input id="desc" placeholder="Məsələn: otel, yanacaq, nahar" maxlength="60">
+<label class="f" for="amt">Məbləğ (₼)</label><input id="amt" inputmode="decimal" placeholder="0.00">
+<label class="f" for="payer">Kim ödəyib</label><select id="payer"></select>
+<label class="f">Necə bölünsün</label>
+<div class="seg"><button type="button" data-mode="equal" aria-pressed="true">Bərabər</button><button type="button" data-mode="custom" aria-pressed="false">Fərqli məbləğlərlə</button></div>
+<div id="who" style="margin-top:6px"></div>
+<div class="hint" id="whoHint"></div>
+<div class="err" id="err" role="alert"></div>
+<div class="row"><button class="p" id="save">Xərci əlavə et</button><button id="cancel" hidden>Ləğv et</button></div>
+</div>
+
+<div class="card">
+<h2>Dostlar</h2>
+<div id="people"></div>
+<div class="row"><button id="addP">Dost əlavə et</button></div>
+<div class="hint" id="pHint"></div>
+</div>
+</div>
+
+<div>
+<div class="card">
+<h2>Hər kəsin balansı</h2>
+<div class="sc"><table><thead><tr><th>Ad</th><th class="r">Ödəyib</th><th class="r">Payı</th><th class="r">Balans</th></tr></thead><tbody id="bal"></tbody></table></div>
+<div class="hint">Müsbət balans: ona pul qaytarılmalıdır. Mənfi balans: o, pul ödəməlidir.</div>
+</div>
+<div class="card">
+<h2>Xərclər</h2>
+<div id="exps"></div>
+</div>
+<div class="card">
+<div class="row" style="margin-top:0"><button id="demo">Nümunə məlumat yüklə</button><button id="reset" class="d">Hamısını sil</button></div>
+<details><summary>Fərziyyələr</summary>
+<p>Xərclər standart olaraq seçilən iştirakçılar arasında bərabər bölünür. Yalnız bir valyuta (₼) var. Məbləğlər qəpiklə hesablanır, qalıq qəpik ilk iştirakçılara paylanır. Proqram real ödənişləri izləmir, yalnız hesablayır. Məlumat bu brauzerdə saxlanılır, hesab və ya giriş tələb olunmur.</p></details>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const KEY='safar-xercleri-v1';
+const uid=()=>Math.random().toString(36).slice(2,9);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fm=c=>(c/100).toFixed(2)+' ₼';
+const toC=v=>{const n=parseFloat(String(v).replace(',','.'));return isFinite(n)?Math.round(n*100):0};
+const fresh=()=>({people:[1,2,3,4,5].map(i=>({id:uid(),name:'Dost '+i})),expenses:[]});
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&Array.isArray(d.people)&&Array.isArray(d.expenses)&&d.people.length)return d}catch(e){}return fresh()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+let S=load(),F;
+const nm=id=>{const p=S.people.find(x=>x.id===id);return p?p.name:'?'};
+function newF(){F={desc:'',amount:'',payer:S.people[0].id,mode:'equal',sel:{},cus:{},edit:null};S.people.forEach(p=>F.sel[p.id]=true)}
+newF();
+
+function eqSplit(amt,ids){const b=Math.floor(amt/ids.length),r=amt-b*ids.length,o={};ids.forEach((id,i)=>o[id]=b+(i<r?1:0));return o}
+function calc(){
+ const bal={},paid={},share={};S.people.forEach(p=>{bal[p.id]=0;paid[p.id]=0;share[p.id]=0});
+ S.expenses.forEach(e=>{paid[e.payer]+=e.amount;bal[e.payer]+=e.amount;for(const k in e.split){share[k]+=e.split[k];bal[k]-=e.split[k]}});
+ const cr=[],db=[];
+ S.people.forEach(p=>{if(bal[p.id]>0)cr.push([p.id,bal[p.id]]);else if(bal[p.id]<0)db.push([p.id,-bal[p.id]])});
+ cr.sort((a,b)=>b[1]-a[1]);db.sort((a,b)=>b[1]-a[1]);
+ const tx=[];let i=0,j=0;
+ while(i<cr.length&&j<db.length){const m=Math.min(cr[i][1],db[j][1]);tx.push({from:db[j][0],to:cr[i][0],amt:m});cr[i][1]-=m;db[j][1]-=m;if(!cr[i][1])i++;if(!db[j][1])j++}
+ return{bal,paid,share,tx};
+}
+
+function renderPeople(){
+ $('people').innerHTML=S.people.map(p=>`<div class="pr"><input data-name="${p.id}" value="${esc(p.name)}" maxlength="24" aria-label="Dostun adı"><button class="s d" data-act="rm" data-id="${p.id}" aria-label="Sil">Sil</button></div>`).join('');
+}
+function renderForm(){
+ $('payer').innerHTML=S.people.map(p=>`<option value="${p.id}" ${p.id===F.payer?'selected':''}>${esc(p.name)}</option>`).join('');
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===F.mode));
+ $('who').innerHTML=S.people.map(p=>F.mode==='equal'
+  ?`<div class="wr"><label><input type="checkbox" data-sel="${p.id}" ${F.sel[p.id]?'checked':''}>${esc(p.name)}</label></div>`
+  :`<div class="wr"><label>${esc(p.name)}</label><input class="num" inputmode="decimal" data-cus="${p.id}" placeholder="0.00" value="${esc(F.cus[p.id]||'')}" aria-label="${esc(p.name)} payı"></div>`).join('');
+ hint();
+ $('fTitle').textContent=F.edit?'Xərci redaktə et':'Xərc əlavə et';
+ $('save').textContent=F.edit?'Dəyişiklikləri saxla':'Xərci əlavə et';
+ $('cancel').hidden=!F.edit;
+}
+function hint(){
+ const a=toC(F.amount);
+ if(F.mode==='equal'){const n=S.people.filter(p=>F.sel[p.id]).length;$('whoHint').textContent=n&&a?`${n} nəfər, hər birinə təxminən ${fm(Math.round(a/n))}`:'Xərcdə iştirak edənləri seçin.'}
+ else{let s=0;S.people.forEach(p=>s+=Math.max(0,toC(F.cus[p.id])));$('whoHint').textContent=`Daxil edilən: ${fm(s)} / ${fm(a)}. Qalıq: ${fm(a-s)}`}
+}
+function renderAll(skipPeople){
+ const c=calc(),tot=S.expenses.reduce((s,e)=>s+e.amount,0);extras(c);
+ $('sTot').textContent=fm(tot);$('sCnt').textContent=S.expenses.length;
+ $('sAvg').textContent=fm(Math.round(tot/S.people.length));$('sTx').textContent=c.tx.length;
+ $('settle').innerHTML=c.tx.length?c.tx.map(t=>`<div class="pay${isP(t)?' done':''}"><div class="rest"><span class="n">${esc(nm(t.from))}</span><span class="ar" aria-label="ödəyir">→</span><span class="n">${esc(nm(t.to))}</span></div><span class="am">${fm(t.amt)}</span><button class="s" data-act="paid" data-k="${pk(t)}">${isP(t)?'Geri al':'Ödənildi'}</button></div>`).join(''):`<div class="${S.expenses.length?'ok':'emp'} pay">${S.expenses.length?'Hesablar bərabərdir, heç kim heç kimə borclu deyil.':'Xərc əlavə etdikdən sonra ödənişlər burada görünəcək.'}</div>`;
+ $('bal').innerHTML=S.people.map(p=>{const b=c.bal[p.id];return`<tr><td>${esc(p.name)}</td><td class="r">${fm(c.paid[p.id])}</td><td class="r">${fm(c.share[p.id])}</td><td class="r ${b>0?'pos':b<0?'neg':''}">${b>0?'+':''}${fm(b)}</td></tr>`}).join('');
+ $('exps').innerHTML=S.expenses.length?S.expenses.map(e=>{const k=Object.keys(e.split);return`<div class="ex"><div class="i"><div class="t">${ic(e.desc)} ${esc(e.desc)}</div><div class="m">Ödəyən: ${esc(nm(e.payer))}. Bölünür: ${k.length===S.people.length?'hamı':esc(k.map(nm).join(', '))}</div><div class="row" style="margin-top:6px"><button class="s" data-act="edit" data-id="${e.id}">Redaktə</button><button class="s d" data-act="del" data-id="${e.id}">Sil</button></div></div><div class="a">${fm(e.amount)}</div></div>`}).join(''):'<div class="emp">Hələ xərc yoxdur. Soldakı formadan ilk xərci əlavə edin.</div>';
+ if(!skipPeople)renderPeople();
+ renderForm();
+}
+
+function err(m){$('err').textContent=m;return false}
+function submit(){
+ const desc=F.desc.trim(),amt=toC(F.amount);
+ if(!desc)return err('Xərcin təsvirini yazın.');
+ if(amt<=0)return err('Məbləği düzgün daxil edin, məsələn 25.50.');
+ let split={};
+ if(F.mode==='equal'){const ids=S.people.filter(p=>F.sel[p.id]).map(p=>p.id);if(!ids.length)return err('Ən azı bir iştirakçı seçin.');split=eqSplit(amt,ids)}
+ else{let s=0;S.people.forEach(p=>{const c=toC(F.cus[p.id]);if(c>0){split[p.id]=c;s+=c}});if(s!==amt)return err(`Payların cəmi (${fm(s)}) xərcə (${fm(amt)}) bərabər olmalıdır.`)}
+ const e={id:F.edit||uid(),desc,payer:F.payer,amount:amt,split};
+ if(F.edit)S.expenses=S.expenses.map(x=>x.id===F.edit?e:x);else S.expenses.unshift(e);
+ err('');$('desc').value='';$('amt').value='';newF();save();renderAll();return true;
+}
+function editExp(id){
+ const e=S.expenses.find(x=>x.id===id);if(!e)return;
+ const ids=Object.keys(e.split),q=eqSplit(e.amount,ids),same=ids.every(k=>q[k]===e.split[k]);
+ F={desc:e.desc,amount:(e.amount/100).toFixed(2),payer:e.payer,mode:same?'equal':'custom',sel:{},cus:{},edit:id};
+ S.people.forEach(p=>{F.sel[p.id]=ids.includes(p.id);if(e.split[p.id])F.cus[p.id]=(e.split[p.id]/100).toFixed(2)});
+ $('desc').value=F.desc;$('amt').value=F.amount;err('');renderForm();window.scrollTo({top:$('desc').getBoundingClientRect().top+scrollY-120,behavior:'smooth'});
+}
+function addP(){if(S.people.length>=12){$('pHint').textContent='Ən çox 12 nəfər əlavə etmək olar.';return}
+ const p={id:uid(),name:'Dost '+(S.people.length+1)};S.people.push(p);F.sel[p.id]=true;save();renderAll()}
+function rmP(id){
+ if(S.people.length<=2){$('pHint').textContent='Ən azı 2 nəfər qalmalıdır.';return}
+ if(S.expenses.some(e=>e.payer===id||id in e.split)){$('pHint').textContent=nm(id)+' xərclərdə iştirak edir. Əvvəlcə həmin xərcləri silin.';return}
+ S.people=S.people.filter(p=>p.id!==id);delete F.sel[id];if(F.payer===id)F.payer=S.people[0].id;$('pHint').textContent='';save();renderAll();
+}
+function demo(){
+ const n=['Aygün','Elvin','Nigar','Rəşad','Səbinə'];S=fresh();S.people.forEach((p,i)=>p.name=n[i]);
+ const P=S.people.map(p=>p.id),add=(d,pi,a,ids)=>S.expenses.unshift({id:uid(),desc:d,payer:P[pi],amount:a,split:eqSplit(a,ids.map(i=>P[i]))});
+ add('Otel, 3 gecə',1,45000,[0,1,2,3,4]);add('Yanacaq',3,12000,[0,1,2,3,4]);add('Restoran',0,21550,[0,1,2,3,4]);add('Muzey biletləri',2,6000,[0,1,2,3]);add('Market',4,8730,[0,1,2,3,4]);
+ newF();save();renderAll();
+}
+let armed=false;
+$('reset').addEventListener('click',e=>{if(!armed){armed=true;e.target.textContent='Əminsiniz? Bir də basın';setTimeout(()=>{armed=false;$('reset').textContent='Hamısını sil'},3000);return}
+ armed=false;e.target.textContent='Hamısını sil';S=fresh();newF();$('desc').value='';$('amt').value='';save();renderAll()});
+$('demo').addEventListener('click',demo);$('addP').addEventListener('click',addP);$('save').addEventListener('click',submit);
+$('cancel').addEventListener('click',()=>{newF();$('desc').value='';$('amt').value='';err('');renderForm()});
+$('desc').addEventListener('input',e=>F.desc=e.target.value);
+$('amt').addEventListener('input',e=>{F.amount=e.target.value;hint()});
+$('payer').addEventListener('change',e=>F.payer=e.target.value);
+$('desc').addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+$('amt').addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+document.addEventListener('click',e=>{
+ const m=e.target.closest('[data-mode]');if(m){F.mode=m.dataset.mode;renderForm();return}
+ const b=e.target.closest('[data-act]');if(!b)return;const id=b.dataset.id;
+ if(b.dataset.act==='paid'){S.paid=S.paid||{};const k=b.dataset.k;if(S.paid[k])delete S.paid[k];else S.paid[k]=1;save();renderAll();const c=calc();if(c.tx.length&&c.tx.every(isP))boom();return}
+ if(b.dataset.act==='del'){S.expenses=S.expenses.filter(x=>x.id!==id);if(F.edit===id){newF();$('desc').value='';$('amt').value=''}save();renderAll()}
+ else if(b.dataset.act==='edit')editExp(id);else if(b.dataset.act==='rm')rmP(id);
+});
+document.addEventListener('input',e=>{
+ const t=e.target;
+ if(t.dataset.name){const p=S.people.find(x=>x.id===t.dataset.name);p.name=t.value.trim()||'Adsız';save();renderAll(true)}
+ else if(t.dataset.cus){F.cus[t.dataset.cus]=t.value;hint()}
+});
+document.addEventListener('change',e=>{if(e.target.dataset.sel){F.sel[e.target.dataset.sel]=e.target.checked;hint()}});
+$('copy').addEventListener('click',async()=>{
+ const c=calc(),txt='Səfər xərcləri, kim kimə ödəməlidir:\n'+(c.tx.length?c.tx.map(t=>`${nm(t.from)} → ${nm(t.to)}: ${fm(t.amt)}`).join('\n'):'Hesablar bərabərdir.');
+ try{await navigator.clipboard.writeText(txt);$('copied').textContent='Kopyalandı'}catch(e){$('copied').textContent='Kopyalamaq alınmadı, mətni əl ilə seçin'}
+ setTimeout(()=>$('copied').textContent='',2500);
+});
+const pk=t=>t.from+'|'+t.to+'|'+t.amt,isP=t=>!!(S.paid&&S.paid[pk(t)]);
+const IC=[[/otel|hostel|qalma|kirayə/,'🏨'],[/yanacaq|benzin|taksi|yol|avtobus|qatar|təyyarə/,'🚗'],[/restoran|nahar|şam|səhər|kafe|yemək|çay|qəhvə/,'🍽️'],[/market|ərzaq/,'🛒'],[/muzey|bilet|əyləncə|park|konsert/,'🎟️'],[/hədiyyə|suvenir/,'🎁']];
+const ic=d=>{d=d.toLowerCase();for(const[r,e]of IC)if(r.test(d))return e;return'🧾'};
+function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const cs=['#2b44c7','#0b7a4b','#f5a524','#e5484d','#8da2ff'];
+ for(let i=0;i<48;i++){const e=document.createElement('i');e.className='cf';e.style.cssText=`left:${Math.random()*100}vw;background:${cs[i%5]};--dx:${(Math.random()-.5)*200}px;animation-delay:${Math.random()*.4}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),2400)}}
+function extras(c){
+ const done=c.tx.filter(isP).reduce((s,t)=>s+t.amt,0),all=c.tx.reduce((s,t)=>s+t.amt,0);
+ $('prog').style.width=(all?done/all*100:(S.expenses.length?100:0))+'%';
+ const ch=[];
+ if(c.tx.length&&c.tx.every(isP))ch.push('🎉 Hamı hesablaşıb, səfər xoş keçsin!');
+ if(S.expenses.length){
+  const top=S.people.reduce((a,p)=>c.paid[p.id]>c.paid[a.id]?p:a);
+  if(c.paid[top.id]>0)ch.push(`👑 Ən çox ödəyən: ${esc(top.name)} (${fm(c.paid[top.id])})`);
+  const low=S.people.reduce((a,p)=>c.bal[p.id]<c.bal[a.id]?p:a);
+  if(c.bal[low.id]<0)ch.push(`🐢 Ən çox borclu: ${esc(low.name)} (${fm(-c.bal[low.id])})`);
+  const big=S.expenses.reduce((a,e)=>e.amount>a.amount?e:a);
+  ch.push(`💸 Ən bahalı xərc: ${esc(big.desc)} (${fm(big.amount)})`);
+ }
+ $('aw').innerHTML=ch.map(x=>`<span class="chip">${x}</span>`).join('');
+ flow(c);
+}
+function flow(c){
+ if(!c.tx.length){$('flow').innerHTML='';return}
+ const n=S.people.length,R=125,C=180,pos={};
+ S.people.forEach((p,i)=>{const a=-Math.PI/2+i*2*Math.PI/n;pos[p.id]=[C+R*Math.cos(a),C+R*Math.sin(a)]});
+ const H='paint-order:stroke;stroke:var(--sf);stroke-width:4px';
+ let s='<svg viewBox="0 0 360 360" role="img" aria-label="Ödəniş sxemi"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" style="fill:var(--ac)"/></marker></defs>';
+ c.tx.forEach(t=>{const[a,b]=pos[t.from],[x,y]=pos[t.to],dx=x-a,dy=y-b,l=Math.hypot(dx,dy),u=[dx/l,dy/l],d=isP(t);
+  s+=`<line x1="${a+u[0]*26}" y1="${b+u[1]*26}" x2="${x-u[0]*30}" y2="${y-u[1]*30}" style="stroke:var(--ac);stroke-width:2.5;opacity:${d?.3:1}" ${d?'stroke-dasharray="5 4"':''} marker-end="url(#ah)"/><text x="${(a+x)/2}" y="${(b+y)/2+4}" text-anchor="middle" font-size="12" font-weight="700" style="fill:var(--tx);${H}">${fm(t.amt)}</text>`});
+ S.people.forEach(p=>{const[x,y]=pos[p.id],b=c.bal[p.id],k=b>0?'--ok':b<0?'--dg':'--bd';
+  s+=`<circle cx="${x}" cy="${y}" r="22" style="fill:var(--soft);stroke:var(${k});stroke-width:3"/><text x="${x}" y="${y+6}" text-anchor="middle" font-size="17" font-weight="700" style="fill:var(--tx)">${esc([...p.name][0].toUpperCase())}</text><text x="${x}" y="${y+40}" text-anchor="middle" font-size="12" style="fill:var(--tx);${H}">${esc(p.name)}</text>`});
+ $('flow').innerHTML=s+'</svg>';
+}
+function xl(){
+ const c=calc(),f=v=>v/100;
+ const A=[['Kim','Kimə','Məbləğ (₼)','Ödənilib']].concat(c.tx.map(t=>[nm(t.from),nm(t.to),f(t.amt),isP(t)?'Bəli':'Xeyr']));
+ const B=[['Ad','Ödəyib (₼)','Payı (₼)','Balans (₼)']].concat(S.people.map(p=>[p.name,f(c.paid[p.id]),f(c.share[p.id]),f(c.bal[p.id])]));
+ const X=[['Xərc','Ödəyən','Məbləğ (₼)'].concat(S.people.map(p=>p.name))].concat(S.expenses.map(e=>[e.desc,nm(e.payer),f(e.amount)].concat(S.people.map(p=>f(e.split[p.id]||0)))));
+ if(window.XLSX){const wb=XLSX.utils.book_new();[['Ödənişlər',A],['Balans',B],['Xərclər',X]].forEach(([n,d])=>XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(d),n));XLSX.writeFile(wb,'safar-xercleri.xlsx');return}
+ const q=v=>'"'+String(v).replace(/"/g,'""')+'"',csv='\ufeff'+[A,B,X].map(d=>d.map(r=>r.map(q).join(';')).join('\n')).join('\n\n');
+ const u=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download='safar-xercleri.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);
+}
+$('xls').addEventListener('click',xl);
+$('pdf').addEventListener('click',()=>window.print());
+renderAll();
+</script>
+</body>
+</html>
